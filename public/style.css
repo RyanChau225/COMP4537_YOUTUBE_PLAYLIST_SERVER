@@ -1,0 +1,72 @@
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  color: #333;
+}
+
+#playlistForm {
+  margin-bottom: 20px;
+}
+
+#playlistForm input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#playlistForm button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#playlistForm button:hover {
+  background-color: #45a049;
+}
+
+#playlistJson {
+  text-align: left;
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  overflow: auto;
+  max-height: 400px; /* Adjust height as needed */
+}
+
+/* Style to improve JSON readability */
+.pretty-json {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap; /* Since JSON is formatted */
+}
+
+.pretty-json .key {
+  font-weight: bold;
+  color: #a52a2a;
+}
+
+.pretty-json .string {
+  color: #008b8b;
+}
+
+.pretty-json .number {
+  color: #0000ff;
+}
+
+.pretty-json .boolean {
+  color: #ff4500;
+}
