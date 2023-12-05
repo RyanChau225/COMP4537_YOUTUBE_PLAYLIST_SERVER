@@ -1,28 +1,14 @@
 const { google } = require("googleapis");
 const express = require("express");
 const router = express.Router();
-const auth = require("./middleware/jwt-auth");
-const jwt = require("jsonwebtoken");
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, PUT, POST, DELETE, PATCH, OPTIONS"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, Content-Length, X-Request-With"
-  );
-  next();
-});
 
 const youtube = google.youtube({
   version: "v3",
   auth: process.env.YOUTUBE_API_KEY, // Your API key
 });
 
-router.get("/playlist", auth, async (req, res) => {
-  const playlistId = req.query.playlistId; // Extracted from the URL
+router.post("/playlist", async (req, res) => {
+  let playlistId = req.body.playlistId; // Extracted from the body
 
   try {
     const response = await youtube.playlists.list({
@@ -34,8 +20,9 @@ router.get("/playlist", auth, async (req, res) => {
       playlistId: playlistId,
       maxResults: 50, // Adjust as needed
     });
-    res.json(playlistItems.data);
+    res.status(200).json(playlistItems.data);
   } catch (error) {
+    console.log(error);
     res.status(500).send("Error fetching YouTube playlist");
   }
 });
